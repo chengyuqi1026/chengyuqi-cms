@@ -48,9 +48,9 @@
 				  <li class="nav-item">
 				    <a class="nav-link" href="#" onclick="showWork($(this),'/admin/link')" >友情链接管理</a>
 				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link" href="#" onclick="showWork($(this),'/admin/userComplain')" >用户投诉管理</a>
-				  </li>
+				  <!-- <li class="nav-item">
+				    <a class="nav-link" href="#" onclick="showWork($(this),'/admin/userComplain')" >用户管理</a>
+				  </li> -->
 				  <li class="nav-item">
 				    <a class="nav-link" href="#" onclick="showWork($(this),'/admin/')" >用户管理</a>
 				  </li>
