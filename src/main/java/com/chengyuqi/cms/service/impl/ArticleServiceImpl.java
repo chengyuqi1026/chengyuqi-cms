@@ -197,4 +197,16 @@ public class ArticleServiceImpl implements ArticleService {
 		
 		return new PageInfo<Complain>(articleMapper.getComplains(articleId));
 	}
+	
+	@Override
+	public List<Complain> getComplain(int page) {
+		PageHelper.startPage(page, Commcont.PAGE_SIZE);
+		List<Complain> list= articleMapper.getcomplain();
+		for (Complain complain : list) {
+			Integer articleId = complain.getArticleId();
+			Article article =articleMapper.getTitle(articleId);
+			complain.setArticle(article);
+		}
+		return list;
+	}
 }

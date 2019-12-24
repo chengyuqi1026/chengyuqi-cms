@@ -4,11 +4,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- <div class="container-fluid"> -->
 <select id="state">
+			<option value="-1" ${status==-1?"selected":""} >全部</option>
 			<option value="0" ${status==0?"selected":""} >待审核</option>
 			<option value="1" ${status==1?"selected":""}>审核通过</option> 		
 			<option value="2" ${status==2?"selected":""}>审核被拒</option>
 		</select>
-	<table class="table">
+	<table class="table" >
 		<!-- articlePage -->
 	  <thead>
           <tr>
@@ -21,7 +22,7 @@
             <th>状态</th>
             <th>投诉数</th>
             <th>是否热门</th>
-            <th>操作</th>
+            <th width="240px">操作</th>
           </tr>
         </thead>
         <tbody>
@@ -129,6 +130,7 @@
 	
 <!-- </div>     -->
 <script>
+	//var id= global_article_id;
 	var global_article_id;
 	
 	$('#articleContent').on('hidden.bs.modal', function (e) {
@@ -197,6 +199,7 @@
 				alert('操作成功')
 				//隐藏当前的模态框
 				$('#articleContent').modal('hide')
+				$('#complainModal').modal('hide');
 				//刷新当前的页面
 				//refreshPage();
 				return;	
@@ -217,7 +220,8 @@
 			if(msg.code==1){
 				alert('操作成功')
 				//隐藏当前的模态框
-				$('#articleContent').modal('hide')
+				$('#articleContent').modal('hide');
+				
 				//刷新当前的页面
 				//refreshPage();
 				return;
@@ -246,7 +250,8 @@
 	* 查看文章的投诉
 	*/
 	function complainList(id){
-		$("#complainModal").modal('show')
+		global_article_id=id;
+		$("#complainModal").modal('show');
 		$("#complainListDiv").load("/article/complains?articleId="+id);
 		
 	} 

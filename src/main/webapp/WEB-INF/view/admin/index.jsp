@@ -36,21 +36,26 @@
 	</nav>
 </nav>
 <!--  头结束 -->	
-	<div class="container row">
+<div class="container-fluid">
+	<div class=" row">
 		<div class="col-md-2" style="margin-top:20px ; border-right:solid 2px"> 
 			<!-- 左侧的菜单 -->
 			<ul class="nav flex-column mymenuselected">
 				  <li class="nav-item ">
-				    <a  class="nav-link active" href="#" onclick="showWork($(this),'/admin/article?status=0&page=1')" >文章管理</a>
+				    <a  class="nav-link active" href="#" onclick="showWork($(this),'/admin/article?status&page')" >文章管理</a>
 				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link" href="#" onclick="showWork($(this),'/admin/comment')" >评论管理</a>
-				  </li>
+				  
 				  <li class="nav-item">
 				    <a class="nav-link" href="#" onclick="showWork($(this),'/admin/link')" >友情链接管理</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" href="#" onclick="showWork($(this),'/admin/user')" >用户管理管理</a>
+				    <a class="nav-link" href="#" onclick="showWork($(this),'/admin/userComplain')" >用户投诉管理</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="#" onclick="showWork($(this),'/admin/')" >用户管理</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="#" onclick="showWork($(this),'/admin/comment')" >评论管理</a>
 				  </li>
 				</ul>	
 		</div>
@@ -60,6 +65,7 @@
 		    
 		</div>	
 	</div>
+</div>
 	
 <!-- 尾开始 -->
 <nav class="nav fixed-bottom justify-content-center  text-white-50 bg-dark"   height="70px"> 
@@ -67,7 +73,6 @@
 </nav>
 
 <script type="text/javascript">	
-	
 	
 	function showWork(obj,url){
 		$(".mymenuselected li").removeClass("menuselected");

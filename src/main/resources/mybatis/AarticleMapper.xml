@@ -55,8 +55,16 @@
 	<select id="list" resultMap="articleMapper">
 		SELECT id,title,channel_id,category_id ,user_id, created,status,hot ,picture ,complainCnt
 		  FROM cms_article
-		  WHERE status = #{value} AND deleted=0
+		  WHERE  deleted=0
+		   <if test="value!=-1">
+		  	AND status=#{value}
+		  </if>
+		  
 		  ORDER BY id DESC 
+	</select>
+	
+	<select id="getTitle"  resultMap="articleMapper">
+		select title from cms_article where id=#{articleId}
 	</select>
 	
 	
@@ -91,5 +99,10 @@
 	<select id="getComplains" resultMap="ComplainMapper">
 		SELECT * FROM cms_complain where article_id=#{value}
 	</select>
+	
+	<select id="getcomplain" resultMap="ComplainMapper">
+		SELECT * FROM cms_complain 
+	</select>
+	
 	
 </mapper>

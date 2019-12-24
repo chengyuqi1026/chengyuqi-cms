@@ -1,5 +1,7 @@
 package com.chengyuqi.cms.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.chengyuqi.cms.common.CmsError;
 import com.chengyuqi.cms.common.CmsMessage;
 import com.chengyuqi.cms.entity.Article;
+import com.chengyuqi.cms.entity.Complain;
 import com.chengyuqi.cms.entity.Link;
 import com.chengyuqi.cms.service.ArticleService;
 import com.github.pagehelper.PageInfo;
@@ -28,8 +31,8 @@ public class AdminController {
 	}
 	
 	@RequestMapping("article")
-	public String article(HttpServletRequest request,int status,int page) {
-		
+	public String article(HttpServletRequest request,@RequestParam(defaultValue= "-1") int status ,
+			@RequestParam(defaultValue= "1") int page) {
 		PageInfo<Article> articlePage =articleService.list(status, page);
 		System.err.println(status);
 		request.setAttribute("pg", articlePage);
@@ -126,5 +129,17 @@ public class AdminController {
 	public Object linkAdd(HttpServletRequest request,Link link) {
 		boolean flag = articleService.addLink(link);
 		return flag;
+	}
+	
+	@RequestMapping("userComplain")
+	public String userComplain(HttpServletRequest request,@RequestParam(defaultValue="1")int page) {
+		List<Complain> list = articleService.getComplain(page);
+		
+		/*for (Complain complain : list) {
+			System.err.println(complain+"---------");
+		}*/
+		PageInfo<Complain> pageInfo = new PageInfo<>(list);
+		request.setAttribute("pg", pageInfo);
+		return "admin/complain";
 	}
 }

@@ -159,4 +159,12 @@ public interface ArticleMapper {
 	List<Complain> getComplains(int articleId);
 
 	
+	List<Complain> getcomplain();
+	
+	
+	
+	Article getTitle(@Param("articleId")Integer articleId);
+
+
+	
 }

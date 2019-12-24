@@ -32,6 +32,18 @@ public class Complain {
 	private Date created          ;
 	
 	private User user;
+	
+	private Article article;
+	
+	
+	
+	public Article getArticle() {
+		return article;
+	}
+
+	public void setArticle(Article article) {
+		this.article = article;
+	}
 
 	public Integer getId() {
 		return id;
@@ -134,7 +146,7 @@ public class Complain {
 		return "Complain [id=" + id + ", articleId=" + articleId + ", userId=" + userId + ", complainType="
 				+ complainType + ", compainOption=" + compainOption + ", srcUrl=" + srcUrl + ", picture=" + picture
 				+ ", content=" + content + ", email=" + email + ", mobile=" + mobile + ", created=" + created
-				+ ", user=" + user + "]";
+				+ ", user=" + user + ", article=" + article + "]";
 	}
 	
 	
